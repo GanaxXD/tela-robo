@@ -1,0 +1,35 @@
+/* Classe */
+.container{
+	-fx-background-color: rgb(198, 211, 213);
+}
+
+.containerInterno{
+	-fx-background-color: #3d54c5;
+	-fx-font-family: Assistant;
+	-fx-min-height: 400px;
+	-fx-background-radius: 50px;
+}
+
+.fonteGeral{
+	-fx-font-family: Assistant;
+}
+
+.fonteLabel{
+	-fx-font-family: Assistant;
+	-fx-font-size: 20px;
+	-fx-text-fill: #fff;
+	-fx-padding: 20px;
+}
+
+.input{
+	-fx-start-margin: 60px;
+}
+
+.botao{
+	-fx-background-radius: 100px;
+	-fx-min-width: 200px;
+	-fx-min-height: 45px;
+	-fx-background-color: #32c039;
+	-fx-text-fill: #ffffff;	
+	-fx-font-size: 22px
+}
