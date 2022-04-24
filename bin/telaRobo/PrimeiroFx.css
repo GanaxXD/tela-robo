@@ -23,6 +23,7 @@
 
 .input{
 	-fx-start-margin: 60px;
+	-fx-background-radius: 40px
 }
 
 .botao{

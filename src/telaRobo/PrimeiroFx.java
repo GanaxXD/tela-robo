@@ -1,28 +1,41 @@
 package telaRobo;
 
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class PrimeiroFx extends Application{
 	
 	public String fonteAssistent = "https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap";
 	public String fonteAssistentLabel = "https://fonts.googleapis.com/css2?family=Assistant:wght@700;800&display=swap";
-
+	public Image tjIcon = new Image("images/tjlogo.png");
+	public Image toadaIcon = new Image("images/ToadaLab.png");
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Robô Triador - Tela de Configuração");
+		primaryStage.centerOnScreen();
+		primaryStage.getIcons().add(tjIcon);
 		
 		//Caixa na vertical (alinha os elementos na vertical)
 		VBox containerExterno = new VBox(50.0);
 		VBox containerInterno = new VBox(10.0);
+		HBox perfil = new HBox();
+		HBox tarefas = new HBox();
+		
+		perfil.setMaxSize(600, 120);
+		tarefas.setMaxSize(600, 200);
+		
 		
 		containerInterno.getStyleClass().add("containerInterno");
 		containerInterno.setAlignment(Pos.BASELINE_CENTER);
@@ -41,17 +54,27 @@ public class PrimeiroFx extends Application{
 		
 		inputPerfil.setMaxSize(450.0, 80.0);
 		inputTarefas.setMaxSize(450.0, 80.0);
+		inputPerfil.getStyleClass().add("input");
+		inputTarefas.getStyleClass().add("input");
+		
+		
+		perfil.getChildren().addAll(labelPerfil, inputPerfil);
+		tarefas.getChildren().addAll(labelTarefas, inputTarefas);
 		
 		
 		//Vinculando o botão dentro da caixa inicial
 		containerInterno.getChildren()
-			.addAll(labelPerfil, inputPerfil,
-					labelTarefas, inputTarefas,
-					labelFiltro, botaoCadastrar);
+			.addAll(perfil, tarefas);
+		
 		containerExterno.getChildren().add(containerInterno);
 		
 		//Centralizando
 		containerExterno.setAlignment(Pos.CENTER);
+		containerExterno.setBackground(Background.fill(
+			Paint.valueOf("linear-gradient(from 0% 0% to 100% 100%, red  0% , blue 30%,  black 100%)")
+			)
+		);
+		
 		
 		//Definindo espaçamento entre os elementos
 		containerExterno.setSpacing(60);
@@ -77,7 +100,7 @@ public class PrimeiroFx extends Application{
 		cena.getStylesheets().add(caminhoCss);
 		
 		//adicionando a um elemento as configuraçãos da classe .container definida no css
-		containerExterno.getStyleClass().add("container");
+		//containerExterno.getStyleClass().add("container");
 		
 		botaoCadastrar.getStyleClass().addAll("fonteGeral", "botao");
 		botaoCadastrar.getStyleClass().add(fonteAssistent);
