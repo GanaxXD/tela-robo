@@ -8,6 +8,8 @@
 	-fx-font-family: Assistant;
 	-fx-min-height: 400px;
 	-fx-background-radius: 50px;
+	-fx-stroke: "#B0C4DE";
+	-fx-stroke-width: 3
 }
 
 .fonteGeral{

@@ -1,5 +1,6 @@
 package telaRobo;
 
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,10 +9,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
 public class PrimeiroFx extends Application{
@@ -37,12 +42,6 @@ public class PrimeiroFx extends Application{
 		tarefas.setMaxSize(600, 200);
 		
 		
-		containerInterno.getStyleClass().add("containerInterno");
-		containerInterno.setAlignment(Pos.BASELINE_CENTER);
-		containerInterno.setMaxWidth(650.0);
-		containerInterno.setMaxHeight(500);
-		containerInterno.setSpacing(20);
-		
 		//Botões
 		Button botaoCadastrar = new Button("Cadastar");
 		
@@ -52,15 +51,6 @@ public class PrimeiroFx extends Application{
 		TextField inputPerfil = new TextField();
 		TextField inputTarefas = new TextField();
 		
-		inputPerfil.setMaxSize(450.0, 80.0);
-		inputTarefas.setMaxSize(450.0, 80.0);
-		inputPerfil.getStyleClass().add("input");
-		inputTarefas.getStyleClass().add("input");
-		
-		
-		perfil.getChildren().addAll(labelPerfil, inputPerfil);
-		tarefas.getChildren().addAll(labelTarefas, inputTarefas);
-		
 		
 		//Vinculando o botão dentro da caixa inicial
 		containerInterno.getChildren()
@@ -68,10 +58,15 @@ public class PrimeiroFx extends Application{
 		
 		containerExterno.getChildren().add(containerInterno);
 		
+		Stop[] cores = new Stop[] {new Stop(0, Color.WHITE), new Stop(0.5, Color.AQUAMARINE), new Stop(1, Color.CADETBLUE)};
+		LinearGradient gradiente = new LinearGradient(0, 0, 1, 0, true,CycleMethod.NO_CYCLE, cores);
+		
 		//Centralizando
 		containerExterno.setAlignment(Pos.CENTER);
-		containerExterno.setBackground(Background.fill(
-			Paint.valueOf("linear-gradient(from 0% 0% to 100% 100%, red  0% , blue 30%,  black 100%)")
+		//Adicionando cores
+		containerInterno.setBackground(Background.fill(
+				gradiente
+			//Paint.valueOf("linear-gradient(from 0% 0% to 100% 100%, red  -10% , blue 38%,  black 0%)")
 			)
 		);
 		
@@ -98,6 +93,25 @@ public class PrimeiroFx extends Application{
 				.toExternalForm();
 		
 		cena.getStylesheets().add(caminhoCss);
+		
+		inputPerfil.setMaxSize(450.0, 80.0);
+		inputTarefas.setMaxSize(450.0, 80.0);
+		inputPerfil.getStyleClass().add("input");
+		inputTarefas.getStyleClass().add("input");
+		
+		
+		perfil.getChildren().addAll(labelPerfil, inputPerfil);
+		tarefas.getChildren().addAll(labelTarefas, inputTarefas);
+		
+
+		containerInterno.getStyleClass().add("containerInterno");
+		containerInterno.setAlignment(Pos.CENTER);
+		containerInterno.setMaxWidth(650.0);
+		containerInterno.setMaxHeight(500);
+		containerInterno.setSpacing(20);
+		
+		
+		
 		
 		//adicionando a um elemento as configuraçãos da classe .container definida no css
 		//containerExterno.getStyleClass().add("container");
