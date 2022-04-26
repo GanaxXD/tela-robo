@@ -11,9 +11,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -27,24 +33,55 @@ public class PrimeiroFx extends Application{
 	public String fonteGeral = "https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap";
 	public String fontLabelAssitant = "https://fonts.googleapis.com/css2?family=Assistant:wght@800&display=swap";
 	public Image tjIcon = new Image("images/tjlogo.png");
-	public Image toadaIcon = new Image("images/toadaIcon.jpg");
+	public Image toadaIcon = new Image("images/toadaIcon.png");
+	public Image fundo = new Image("images/fundo.jpg");
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-		primaryStage.setTitle("Rôbo Triador - Tela de configuração");
-		primaryStage.centerOnScreen();
-		primaryStage.getIcons().add(tjIcon);
-				
 		//Caixa na vertical (alinha os elementos na vertical)
 		VBox tela = new VBox();
-		VBox containerInterno = new VBox(10.0);
+		//VBox containerInterno = new VBox(10.0);
 		HBox containerPerfil = new HBox(10.0);
 		HBox containerTarefas = new HBox(10.0);
 		HBox containerFiltrar = new HBox(10.0);
-		GridPane conteudoInterno = new GridPane();
-		conteudoInterno.setHgap(10.0);
+		HBox containerToada = new HBox(10.0);
+		GridPane containerInterno = new GridPane();
+		containerInterno.setGridLinesVisible(true);
 		
+		//preenchendo a grid com linhas e colunas
+		containerInterno.getColumnConstraints()
+			.addAll(
+					colunas(), colunas(), 
+					colunas(), colunas(), 
+					colunas(), colunas(), 
+					colunas(), colunas(),
+					colunas(), colunas());
+		
+		containerInterno.getRowConstraints()
+		.addAll(
+				linhas(), linhas(), 
+				linhas(), linhas(), 
+				linhas(), linhas(), 
+				linhas(), linhas(),
+				linhas(), linhas());
+		
+		containerInterno.setAlignment(Pos.CENTER);
+		
+		//conteudoInterno.setHgap(10.0);
+		BackgroundImage imagemFundoToada = new BackgroundImage(
+				fundo, 
+				BackgroundRepeat.SPACE,
+				null,
+				BackgroundPosition.CENTER,
+				new BackgroundSize(1000, 650, false, false, false, false));
+				
+		primaryStage.setTitle("Rôbo Triador - Tela de configuração");
+		primaryStage.centerOnScreen();
+		primaryStage.getIcons().add(tjIcon);
+		primaryStage.setMinHeight(654.0);
+		primaryStage.setMinWidth(546.0);
+		
+		tela.setBackground(new Background(imagemFundoToada));
 		
 		
 		//No Fx, eu tenho dois elementos: O palco (stage) e a Cena (Scene)
@@ -57,7 +94,7 @@ public class PrimeiroFx extends Application{
 		primaryStage.setScene(cena);
 		
 		//Componentes da página
-		Button botaoCadastrar = new Button("Cadastar");
+		Button botaoCadastrar = new Button("Iniciar Triagem");
 		Label perfilLabel = new Label("Perfil");
 		Label tarefasLabel = new Label("Tarefas");
 		Label filtrarLabel = new Label("Filtrar");
@@ -65,11 +102,6 @@ public class PrimeiroFx extends Application{
 		TextField perfilTextField = new TextField();
 		TextField tarefasTextField = new TextField();
 		TextField filtrarTextField = new TextField();
-		
-	
-		perfilTextField.setAlignment(Pos.CENTER);
-		perfilTextField.setMinWidth(300.0);
-		perfilTextField.setMaxHeight(500.0);
 		
 		//adicionando a um elemento as configuraçãos da classe .container definida no css
 		//Importando o css criado para minha classe:
@@ -94,8 +126,27 @@ public class PrimeiroFx extends Application{
 		containerPerfil.getChildren().addAll(perfilLabel, perfilTextField);
 		containerTarefas.getChildren().addAll(tarefasLabel, tarefasTextField);
 		containerFiltrar.getChildren().addAll(filtrarLabel, filtrarTextField);
-		containerInterno.getChildren().addAll(containerPerfil, containerTarefas, containerFiltrar, botaoCadastrar);
+		//containerInterno.getChildren().addAll(containerPerfil, containerTarefas, containerFiltrar, botaoCadastrar);
+		containerInterno.add(perfilLabel, 0, 3, 3, 1);
+		containerInterno.add(tarefasLabel, 0, 4, 4, 1);
+		containerInterno.add(filtrarLabel, 0, 5, 5, 1);
+		
+		containerInterno.add(perfilTextField, 2, 3, 8, 1);
+		containerInterno.add(tarefasTextField, 2, 4, 8, 1);
+		containerInterno.add(filtrarTextField, 2, 5, 8, 1);
+		
+		containerInterno.add(botaoCadastrar, 0, 9, 9, 1);
+		
 		tela.getChildren().add(containerInterno);
+		
+		//adicionando textos de ajuda para servidores cegos
+		filtrarLabel.setAccessibleHelp("Filtrar");
+		tarefasLabel.setAccessibleHelp("Tarefas");
+		perfilLabel.setAccessibleHelp("Perfil");
+		tarefasTextField.setAccessibleHelp("Informe as tarefas separadas por vírgulas");
+		filtrarTextField.setAccessibleHelp("Informe o texto da etiqueta que deseja filtrar.");
+		perfilTextField.setAccessibleHelp("Informe o perfil do usuário usado no PJE para realizar a triagem de processos.");
+		botaoCadastrar.setAccessibleHelp("Iniciar Triagem - clique aqui para iniciar a triagem.");
 		
 		//--------ESTILIZAÇÃO ---------:
 		containerInterno.setBackground(Background.fill(
@@ -142,5 +193,20 @@ public class PrimeiroFx extends Application{
 		Stop[] coresGradiente = cores;
 		LinearGradient lg = new LinearGradient(inicioX, inicioY, fimX, fimY, true,CycleMethod.REFLECT, coresGradiente);
 		return lg;
+	}
+	
+	//cria as colunas da grid
+	public ColumnConstraints colunas() {
+		ColumnConstraints coluna = new ColumnConstraints();
+		coluna.setPercentWidth(10);
+		coluna.setFillWidth(true);
+		return coluna;
+	}
+	//cria as linhas da grid
+	public RowConstraints linhas() {
+		RowConstraints linha = new RowConstraints();
+		linha.setPercentHeight(10);
+		linha.setFillHeight(true);
+		return linha;
 	}
 }

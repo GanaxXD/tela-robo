@@ -1,7 +1,8 @@
 /* Classe */
 .container{
-	-fx-background-color: rgb(192, 192, 192);
+	/* -fx-background-color: rgb(192, 192, 192); */
 	-fx-font-family: Assistant;
+	/* -fx-image:"../images/fundo.jpg" */
 }
 
 .containerInterno{
@@ -10,42 +11,46 @@
 	-fx-min-height: 400px;
 	-fx-background-radius: 50px;
 	-fx-stroke: "#B0C4DE";
-	-fx-stroke-width: 3
+	-fx-stroke-width: 4;
+	-fx-background-radius: 40;
 }
 
 .fonteGeral{
 	-fx-font-family: Assistant;
-	-fx-font-size: 20;
+	-fx-font-size: 18;
 }
 
 .fontLabelAssitant{
 	-fx-font-family: Assistant;
-	-fx-font-size: 20;
+	-fx-font-size: 18;
+	-fx-strikethrough: true;
 }
 
 .fonteLabel{
 	-fx-font-family: Assistant;
-	-fx-font-size: 20px;
+	-fx-font-size: 18;
 	-fx-text-fill: #fff;
 	-fx-padding: 20px;
+	-fx-alignment: baseline-left
 }
 
 .botao{
 	-fx-fill: #80ff80;
-	-fx-background-radius: 40;
+	-fx-background-radius: 50;
 	-fx-background-color:#32cd32;
 	-fx-size:100px;
 	-fx-text-fill: #ffffff;
-	-fx-min-width: 200px;
+	-fx-min-width: 300px;
 	-fx-min-height: 45px;
-	-fx-font-size: 22px
+	-fx-font-size: 20px;
+	-fx-alignment: center
 }
 
 .textfield{
-	-fx-alignment: center;
-	-fx-pref-column-count: 9;
-	-fx-font: Assistant;
-	
+	-fx-font-family: Assistant;
+	-fx-start-margin: 10px;
+	-fx-background-radius: 30;
+	-fx-background-color:#dfdfea;
 }
 
 
