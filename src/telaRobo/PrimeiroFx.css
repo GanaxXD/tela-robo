@@ -8,7 +8,6 @@
 .containerInterno{
 	-fx-background-color: #3d54c5;
 	-fx-font-family: Assistant;
-	-fx-min-height: 400px;
 	-fx-background-radius: 50px;
 	-fx-stroke: "#B0C4DE";
 	-fx-stroke-width: 4;
@@ -23,27 +22,23 @@
 .fontLabelAssitant{
 	-fx-font-family: Assistant;
 	-fx-font-size: 18;
-	-fx-strikethrough: true;
 }
 
 .fonteLabel{
 	-fx-font-family: Assistant;
 	-fx-font-size: 18;
 	-fx-text-fill: #fff;
-	-fx-padding: 20px;
-	-fx-alignment: baseline-left
+	-fx-alignment: baseline-left;
+	-fx-font-weight: bold
 }
 
 .botao{
 	-fx-fill: #80ff80;
 	-fx-background-radius: 50;
 	-fx-background-color:#32cd32;
-	-fx-size:100px;
 	-fx-text-fill: #ffffff;
-	-fx-min-width: 300px;
-	-fx-min-height: 45px;
 	-fx-font-size: 20px;
-	-fx-alignment: center
+	-fx-row-valignment: center
 }
 
 .textfield{

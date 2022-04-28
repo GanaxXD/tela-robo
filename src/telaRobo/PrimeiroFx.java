@@ -4,6 +4,7 @@ package telaRobo;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -65,7 +66,7 @@ public class PrimeiroFx extends Application{
 				linhas(), linhas(),
 				linhas(), linhas());
 		
-		containerInterno.setAlignment(Pos.CENTER);
+		
 		
 		//conteudoInterno.setHgap(10.0);
 		BackgroundImage imagemFundoToada = new BackgroundImage(
@@ -81,7 +82,13 @@ public class PrimeiroFx extends Application{
 		primaryStage.setMinHeight(654.0);
 		primaryStage.setMinWidth(546.0);
 		
-		tela.setBackground(new Background(imagemFundoToada));
+		//tela.setBackground(new Background(imagemFundoToada));
+		tela.setBackground(Background.fill(
+				gradiente(0, 0, 1, 1, new Stop[] {
+						new Stop(0, Color.ALICEBLUE),
+						new Stop(1, Color.CORNFLOWERBLUE)
+				}))
+		);
 		
 		
 		//No Fx, eu tenho dois elementos: O palco (stage) e a Cena (Scene)
@@ -102,6 +109,9 @@ public class PrimeiroFx extends Application{
 		TextField perfilTextField = new TextField();
 		TextField tarefasTextField = new TextField();
 		TextField filtrarTextField = new TextField();
+		
+		botaoCadastrar.setMinWidth(400.0);
+		botaoCadastrar.setPrefWidth(	00.0);
 		
 		//adicionando a um elemento as configuraçãos da classe .container definida no css
 		//Importando o css criado para minha classe:
@@ -139,6 +149,11 @@ public class PrimeiroFx extends Application{
 		
 		tela.getChildren().add(containerInterno);
 		
+		//containerInterno.setAlignment(Pos.CENTER);
+		containerInterno.setHgap(2.0);
+		containerInterno.setFillHeight(botaoCadastrar, true);
+		containerInterno.setConstraints(botaoCadastrar, 0, 9);
+		
 		//adicionando textos de ajuda para servidores cegos
 		filtrarLabel.setAccessibleHelp("Filtrar");
 		tarefasLabel.setAccessibleHelp("Tarefas");
@@ -162,7 +177,6 @@ public class PrimeiroFx extends Application{
 		containerInterno.setPrefSize(400.0, 600.0);
 		containerInterno.setMaxSize(500.0, 650.0);
 		containerInterno.setPadding(new Insets(20, 30, 20, 30));
-		containerInterno.setAlignment(Pos.CENTER);
 		containerPerfil.setMaxSize(400.0, 100.0);
 		containerTarefas.setMaxSize(400.0, 100.0);
 		containerFiltrar.setMaxSize(400.0, 100.0);
@@ -206,6 +220,8 @@ public class PrimeiroFx extends Application{
 	public RowConstraints linhas() {
 		RowConstraints linha = new RowConstraints();
 		linha.setPercentHeight(10);
+		linha.setFillHeight(true);
+		linha.setValignment(VPos.CENTER);
 		linha.setFillHeight(true);
 		return linha;
 	}
