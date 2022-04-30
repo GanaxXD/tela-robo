@@ -38,14 +38,42 @@
 	-fx-background-color:#32cd32;
 	-fx-text-fill: #ffffff;
 	-fx-font-size: 20px;
+	-fx-min-width: 220px;
 	-fx-row-valignment: center
+}
+
+.botaoSelecionarTarefas{
+	-fx-fill: #c0c0c0;
+	-fx-background-radius: 50;
+	-fx-background-color:#c4c4f4;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 20px;
+	-fx-min-width: 220px;
+	-fx-row-valignment: center
+}
+
+.botaoCancelar{
+	-fx-fill: #ffffff;
+	-fx-background-radius: 50;
+	-fx-background-color:#ff8080;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 20px;
+	-fx-min-width: 220px;
+	-fx-row-valignment: center
+}
+
+.comboBox{
+	-fx-font-family: Assistant;
+	-fx-start-margin: 10px;
+	-fx-background-radius: 30;
+	-fx-background-color:#e8e8f0;
 }
 
 .textfield{
 	-fx-font-family: Assistant;
 	-fx-start-margin: 10px;
 	-fx-background-radius: 30;
-	-fx-background-color:#dfdfea;
+	-fx-background-color:#e8e8f0;
 }
 
 
