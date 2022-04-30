@@ -79,7 +79,7 @@ public class TelaPrincipal extends Application {
 	// cria as colunas da grid
 	public ColumnConstraints colunas() {
 		ColumnConstraints coluna = new ColumnConstraints();
-		coluna.setPercentWidth(10);
+		coluna.setPercentWidth(14);
 		coluna.setFillWidth(true);
 		return coluna;
 	}
@@ -90,7 +90,6 @@ public class TelaPrincipal extends Application {
 		linha.setPercentHeight(10);
 		linha.setFillHeight(true);
 		linha.setValignment(VPos.CENTER);
-		linha.setFillHeight(true);
 		return linha;
 	}
 
@@ -113,8 +112,11 @@ public class TelaPrincipal extends Application {
 				linhas(), linhas(), linhas(), linhas());
 
 		// conteudoInterno.setHgap(10.0);
-		BackgroundImage imagemFundoToada = new BackgroundImage(fundo, BackgroundRepeat.SPACE, null,
-				BackgroundPosition.CENTER, new BackgroundSize(1000, 650, false, false, false, false));
+		/*
+		 * BackgroundImage imagemFundoToada = new BackgroundImage(fundo,
+		 * BackgroundRepeat.SPACE, null, BackgroundPosition.CENTER, new
+		 * BackgroundSize(1000, 650, false, false, false, false));
+		 */
 
 		primaryStage.setTitle("Rôbo Triador - Tela de configuração");
 		primaryStage.centerOnScreen();
@@ -132,13 +134,13 @@ public class TelaPrincipal extends Application {
 		// eu devo adicionar à cena o mesmo.
 		// O exemplo abaixo faz isso: adiciono a caixa com seus elementos à cena
 		// Depois dos elementos vinculados à cena, eu passo o tamanho da tela (w, h)
-		telaPrincipal = new Scene(tela, 1000, 650);
+		telaPrincipal = new Scene(tela, 1000, 700);
 		// e depois, eu vinculo a cena ao palco
 		primaryStage.setScene(telaPrincipal);
 
 		// Componentes da página
 		Button botaoCadastrar = new Button("Iniciar Triagem");
-		Label navegador = new Label("Navegador");
+		Label navegadorLabel = new Label("Navegador");
 		Label perfilLabel = new Label("Perfil");
 		Label tarefasLabel = new Label("Tarefas");
 		Label filtrarLabel = new Label("Filtrar");
@@ -146,7 +148,7 @@ public class TelaPrincipal extends Application {
 
 		ComboBox<String> perfilComboBox = new ComboBox<String>();
 		ComboBox<String> navegadorComboBox = new ComboBox<String>();
-		Button tarefasButton = new Button();
+		Button tarefasButton = new Button("Selecione as tarefas aqui.");
 		TextField filtrarTextField = new TextField();
 
 		perfilComboBox.setEditable(false);
@@ -156,18 +158,20 @@ public class TelaPrincipal extends Application {
 		}
 
 		navegadorComboBox.getItems().addAll("CHROME", "OPERA", "FIREFOX");
-
-
+		
 		// adicionando a um elemento as configuraçãos da classe .container definida no
 		// css
 		// Importando o css criado para minha classe:
 		String caminhoCss = getClass().getResource("/telaRobo/PrimeiroFx.css").toExternalForm();
 		telaPrincipal.getStylesheets().add(caminhoCss);
+		tela.getStylesheets().add(caminhoCss);
+		containerInterno.getStylesheets().add(caminhoCss);
+		
 		tela.getStyleClass().add("container");
 		botaoCadastrar.getStyleClass().addAll("fonteGeral", "botao");
 		botaoCadastrar.getStyleClass().add(fonteGeral);
-		navegador.getStyleClass().add("fontLabelAssitant");
-		navegador.getStyleClass().add(fontLabelAssitant);
+		navegadorLabel.getStyleClass().add("fontLabelAssitant");
+		navegadorLabel.getStyleClass().add(fontLabelAssitant);
 		navegadorComboBox.getStyleClass().add("comboBox");
 		perfilLabel.getStyleClass().add("fontLabelAssitant");
 		perfilLabel.getStyleClass().add(fontLabelAssitant);
@@ -185,30 +189,29 @@ public class TelaPrincipal extends Application {
 		containerFiltrar.getChildren().addAll(filtrarLabel, filtrarTextField);
 		// containerInterno.getChildren().addAll(containerPerfil, containerTarefas,
 		// containerFiltrar, botaoCadastrar);
-		containerInterno.add(navegador, 0, 3, 2, 1);// coluna, linha, colspan, rowspan
+		containerInterno.add(navegadorLabel, 0, 3, 3, 1);// coluna, linha, colspan, rowspan
 		containerInterno.add(perfilLabel, 0, 4, 3, 1);
-		containerInterno.add(tarefasLabel, 0, 5, 4, 1);
-		containerInterno.add(filtrarLabel, 0, 6, 5, 1);
+		containerInterno.add(tarefasLabel, 0, 5, 3, 1);
+		containerInterno.add(filtrarLabel, 0, 6, 3, 1);
 
-		containerInterno.add(navegadorComboBox, 2, 3, 8, 1);
-		containerInterno.add(perfilComboBox, 2, 4, 8, 1);
-		containerInterno.add(tarefasButton, 2, 5, 8, 1);
-		containerInterno.add(filtrarTextField, 2, 6, 8, 1);
+		containerInterno.add(navegadorComboBox, 3, 3, 6, 1);
+		containerInterno.add(perfilComboBox, 3, 4, 6, 1);
+		containerInterno.add(tarefasButton, 3, 5, 6, 1);
+		containerInterno.add(filtrarTextField, 3, 6, 8, 1);
 
-		containerInterno.add(botaoCadastrar, 0, 9, 9, 1);
+		containerInterno.add(botaoCadastrar, 0, 9, 10, 1);
 
 		tela.getChildren().add(containerInterno);
 
-		// containerInterno.setAlignment(Pos.CENTER);
+		containerInterno.setAlignment(Pos.CENTER);
 		containerInterno.setHgap(2.0);
-		GridPane.setFillHeight(botaoCadastrar, true);
-		GridPane.setConstraints(botaoCadastrar, 0, 9);
+		containerInterno.setVgap(3.0);
 
 		// adicionando textos de ajuda para servidores cegos
 		filtrarLabel.setAccessibleHelp("Filtrar");
 		tarefasLabel.setAccessibleHelp("Tarefas");
 		perfilLabel.setAccessibleHelp("Perfil");
-		navegador.setAccessibleHelp("Navegador de Internet");
+		navegadorLabel.setAccessibleHelp("Navegador de Internet");
 		tarefasButton.setAccessibleHelp("Selecionar as tarefas com que deseja trabalhar");
 		filtrarTextField.setAccessibleHelp("Informe o texto da etiqueta que deseja filtrar.");
 		perfilComboBox
@@ -220,12 +223,26 @@ public class TelaPrincipal extends Application {
 				new Stop[] { new Stop(0, Color.WHITE), new Stop(0.5, Color.CADETBLUE), new Stop(1, Color.BLUE) })));
 
 		containerInterno.setBorder(Border.stroke(Paint.valueOf("#0000FF")));
-		containerInterno.setPrefSize(400.0, 600.0);
-		containerInterno.setMaxSize(500.0, 650.0);
+		containerInterno.setMinSize(450.0, 350.0);
+		containerInterno.setMaxSize(500.0, 550.0);
 		containerInterno.setPadding(new Insets(20, 30, 20, 30));
+		containerInterno.setAlignment(Pos.CENTER);
+		
 		containerPerfil.setMaxSize(400.0, 100.0);
 		containerTarefas.setMaxSize(400.0, 100.0);
 		containerFiltrar.setMaxSize(400.0, 100.0);
+		
+		double tamanhoIdeal = (containerInterno.getMinWidth()/10.0)*6.8;
+		System.out.println(tamanhoIdeal);
+		//Definindo tamanho mínimo dos componentes pelo tamanho do tamanho do "conteudoInterno"
+		navegadorComboBox.setMinWidth(tamanhoIdeal);
+		navegadorComboBox.setMaxWidth(tamanhoIdeal);
+		perfilComboBox.setMinWidth(tamanhoIdeal);
+		perfilComboBox.setMaxWidth(tamanhoIdeal);
+		tarefasButton.setMinWidth(tamanhoIdeal);
+		tarefasButton.setMaxWidth(tamanhoIdeal);
+		botaoCadastrar.setMinWidth(containerInterno.getMinWidth());
+		botaoCadastrar.setMaxWidth(containerInterno.getMinWidth());
 
 		// Centralizando e estilizando a página
 		tela.setAlignment(Pos.CENTER);
@@ -247,9 +264,8 @@ public class TelaPrincipal extends Application {
 	// tela de tarefas
 	public void telaTarefas() {
 		FlowPane quadroInterno = new FlowPane(10.0, 5.0);
-		quadroInterno.setMinSize(775.0, 625.0);
+		quadroInterno.setMinSize(900.0, 690.0);
 		quadroInterno.setPadding(new Insets(20.0, 10.0, 10.0, 20.0));
-		quadroInterno.isResizable();
 
 		Button selecionar = new Button("Selecionar");
 		selecionar.getStyleClass().add("botao");
@@ -338,13 +354,15 @@ public class TelaPrincipal extends Application {
 		});
 
 		// Preparando a exibição da tela
-		tarefaScene = new Scene(quadroInterno, 750.0, 650.0);
+		tarefaScene = new Scene(quadroInterno, 950.0, 750.0);
 
 	}
 
 	public CheckBox inserirCombo(String tarefa) {
 		CheckBox checkbox = new CheckBox(tarefa);
 		checkbox.setAccessibleHelp("Selecionar " + tarefa);
+		checkbox.setManaged(true);
+		checkbox.accessibleHelpProperty().set("Selecionar " + tarefa);
 		checkbox.setOnAction(e -> {
 			checkbox.setAccessibleHelp("Selecionar " + tarefa);
 		});
