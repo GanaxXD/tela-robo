@@ -33,23 +33,20 @@
 }
 
 .botao{
-	-fx-fill: #80ff80;
 	-fx-background-radius: 50;
 	-fx-background-color:#32cd32;
 	-fx-text-fill: #ffffff;
 	-fx-font-size: 20px;
-	-fx-min-width: 220px;
-	-fx-row-valignment: center
+	-fx-min-width: 340;
 }
 
 .botaoSelecionarTarefas{
-	-fx-fill: #c0c0c0;
+	-fx-fill: rgb(0, 64, 128);
 	-fx-background-radius: 50;
 	-fx-background-color:#c4c4f4;
-	-fx-text-fill: #ffffff;
+	-fx-text-fill: rgb(0, 64, 128);
 	-fx-font-size: 20px;
-	-fx-min-width: 220px;
-	-fx-row-valignment: center
+	-fx-min-width: 340;
 }
 
 .botaoCancelar{
