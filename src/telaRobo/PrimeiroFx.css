@@ -14,6 +14,14 @@
 	-fx-background-radius: 40;
 }
 
+.quadroDeTarefas{
+	-fx-background-color: #f0f0f2;
+	-fx-font-family: Assistant;
+	-fx-background-radius: 10px;
+	-fx-stroke: "#B0C4DE";
+	-fx-stroke-width: 5px;
+}
+
 .fonteGeral{
 	-fx-font-family: Assistant;
 	-fx-font-size: 18;
@@ -56,12 +64,11 @@
 	-fx-text-fill: #ffffff;
 	-fx-font-size: 20px;
 	-fx-min-width: 220px;
-	-fx-row-valignment: center
 }
 
 .comboBox{
 	-fx-font-family: Assistant;
-	-fx-start-margin: 10px;
+	-fx-start-margin: 20px;
 	-fx-background-radius: 30;
 	-fx-background-color:#e8e8f0;
 }
