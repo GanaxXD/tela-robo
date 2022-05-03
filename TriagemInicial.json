@@ -2,23 +2,125 @@
 	{
 		"robo": "tjma.PAGE.pje215.geral.TriagemInicial_Page",
 		"qtdRobos": "1", 
+		"timeout": "3",
 		"navegador": "CHROME",
-		"url": "https://pjeih.tjma.jus.br/pje/login.seam",
+		"url": "https://pje2.tjma.jus.br",
 		"perfis": [
-				"2ª Vara da Fazenda Pública de São Luís / Secretaria / Diretor de Secretaria"
+				"1ª Turma Recursal Permanente da Comarca da Ilha de São Luís / Gabinete do 1º Cargo da 1ª Turma Recursal Cível e Criminal de São Luis / Assessoria / Assessor"
 
 		],
 		"tarefas": [
-				
-		 ],
+          "(CIV) Assessoria - Análise da assessoria" ,
+"(SG) Assessoria - Aguardando a sessão (Adiados)" ,
+"(SG) Assessoria - Aguardando a sessão virtual" ,
+"(SG) Assessoria - Aguardando a sessão" ,
+"(SG) Assessoria - Minutar relatório, voto e ementa" ,
+"(SG) Magistrado(a) - Assinar relatório" ,
+"(SG) Magistrado(a) - Votar antecipadamente - não relator" ,
+"(SG) Magistrado(a) - assinar inteiro teor" ,
+"Assinar decisão de urgência" ,
+"Assinar decisão" ,
+"Assinar despacho inicial" ,
+"Assinar despacho" ,
+"Documentos não lidos - Advogado" ,
+"Documentos não lidos - Procuradoria Geral do Estado" ,
+"Habilitação nos autos" ,
+"Minutar decisão de Emb. Declaração" ,
+"Minutar decisão de urgência inicial" ,
+"Minutar decisão de urgência" ,
+"Minutar decisão sobre recurso" ,
+"Minutar decisão" ,
+"Minutar despacho de cumprimento de sentença" ,
+"Minutar despacho inicial" ,
+"Minutar despacho99" ,
+"Processo encaminhado ao CEJUSC1" ,
+"(CIV) Assessoria - Análise da assessoria" ,
+"(SG) Assessoria - Aguardando a sessão virtual" ,
+"(SG) Assessoria - Aguardando a sessão" ,
+"(SG) Assessoria - Análise da assessoria" ,
+"(SG) Assessoria - Minutar relatório, voto e ementa" ,
+"(SG) Magistrado(a) - Assinar relatório" ,
+"(SG) Magistrado(a) - Votar antecipadamente - não relator" ,
+"(SG) Pedido de vista solicitado" ,
+"Assinar decisão de urgência inicial" ,
+"Assinar decisão de urgência" ,
+"Assinar decisão" ,
+"Assinar despacho inicial" ,
+"Minutar decisão de urgência inicial" ,
+"Minutar decisão de urgência" ,
+"Minutar decisão" ,
+"Minutar despacho inicial" ,
+"Minutar despacho" ,
+"(TR) Enviar DJEN" ,
+"Assinar decisão" ,
+"Documentos não lidos - Procuradoria Geral do Estado" ,
+"(SEJUD) Triagem de conclusão" ,
+"Aguardando apreciação do TJMA" ,
+"Aguardando devolução de AR" ,
+"Apensar processos" ,
+"Arquivo definitivo" ,
+"Arquivo provisório" ,
+"Assinar Carta ou mandado" ,
+"Avaliar determinações do magistrado" ,
+"Certificar consulta INFOSEG" ,
+"Certificar cumprimento de carta precatória" ,
+"Certificar trânsito em julgado" ,
+"Concluso para decisão com pedido de liminar" ,
+"Contadoria - Cálculo elaborado" ,
+"Documentos não lidos - Advogado" ,
+"Documentos não lidos - Procuradoria Geral do Estado" ,
+"Documentos não lidos - Procuradoria Geral do Município de Barra do Corda" ,
+"Documentos não lidos - Procuradoria Geral do Município de São Luís" ,
+"Documentos não lidos" ,
+"Encaminhar para instância superior" ,
+"Expediente enviado ao DJE_" ,
+"Expedir Carta ou mandado" ,
+"Expedir RPV1" ,
+"Expedir RPV2" ,
+"Expedir RPV" ,
+"Expedir alvará1" ,
+"Expedir alvará2" ,
+"Expedir alvará" ,
+"Expedir certidão" ,
+"Expedir ofício1" ,
+"Expedir ofício" ,
+"Expedir outros documentos" ,
+"Expedir precatório" ,
+"Imprimir Correspondência_" ,
+"Informar dados da audiência" ,
+"Preparar citação" ,
+"Preparar intimação de alvará1" ,
+"Preparar intimação de alvará2" ,
+"Preparar intimação de alvará" ,
+"Preparar intimação de ato ordinatório" ,
+"Preparar intimação de retirada de suspensão" ,
+"Preparar intimação de suspensão de processo" ,
+"Preparar intimação sobre cálculo" ,
+"Preparar intimação" ,
+"Preparar notificação" ,
+"Preparar ofício1" ,
+"Preparar ofício2" ,
+"Preparar ofício3" ,
+"Preparar ofício" ,
+"Processo com prazo decorrido" ,
+"Processo com prazo em curso" ,
+"Processos suspensos" ,
+"Publicar DJE_" ,
+"Publicar ato do magistrado - DJE" ,
+"Realizar audiência" ,
+"Recebimento de processos migrados - TJMA" ,
+"Recebimento do TJMA" ,
+"Remeter para o TJMA" ,
+"Verificar providência a adotar"		 ],
+		"filtrarEtiqueta":"ISOLDA - ANALISAR",
 		"deletarArquivo":"não",
 		"fonteDeDados":"TAREFA",
-		"filtrarEtiqueta":"1.",
 		"documentosProcesso":[
-								"Selecione"
+								"Sentença",
+								"Contrarrazões",
+								"Ata de audiência",
+								"Recurso Inominado" 
 		],
-		"caminhoDownload": "C:/Users/wcmsodre/Downloads/",
-		"usuario":"67324134300",
-		"senha":"pje123456"
+		"caminhoDownload": "C:/Users/173278/Downloads/"
 	}
 ]
