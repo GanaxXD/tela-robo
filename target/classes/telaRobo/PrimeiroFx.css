@@ -1,0 +1,99 @@
+/* Classe */
+.container{
+	/* -fx-background-color: rgb(192, 192, 192); */
+	-fx-font-family: Assistant;
+	/* -fx-image:"../images/fundo.jpg" */
+}
+
+.containerInterno{
+	-fx-font-family: Assistant;
+	-fx-background-radius: 50px;
+	-fx-border-color: #ffffff;
+	-fx-border-insets: -15;
+	-fx-border-width: 3;
+	-fx-stroke-width: 6px;
+	-fx-stroke-radius: 40;
+	-fx-background-radius: 40;
+	-fx-border-radius: 50px;
+	-fx-background-color: linear-gradient(from 25px 25px to 100px 100px, #d7d2cc, #E0EAFC);
+}
+
+.quadroDeTarefas{
+	-fx-background-color: #f0f0f2;
+	-fx-font-family: Assistant;
+	-fx-background-radius: 10px;
+	-fx-stroke: "#B0C4DE";
+	-fx-stroke-width: 5px;
+}
+
+.fonteGeral{
+	-fx-font-family: Assistant;
+	-fx-font-size: 18;
+}
+
+.fontLabelAssitant{
+	-fx-font-family: Assistant;
+	-fx-font-size: 18;
+}
+
+.fonteLabel{
+	-fx-font-family: Assistant;
+	-fx-font-size: 18;
+	-fx-text-fill: #fff;
+	-fx-alignment: baseline-left;
+	-fx-font-weight: bold
+}
+
+.botao{
+	-fx-background-radius: 50;
+	-fx-background-color:#32cd32;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 20px;
+	-fx-min-width: 340px;
+	-fx-max-height: 28px;
+}
+
+.botaoSelecionarTarefas{
+	-fx-background-radius: 50;
+	-fx-background-color:#c4c4f4;
+	-fx-text-fill: #0000ff;
+	-fx-font-size: 12px;
+	-fx-max-height: 20px;
+	-fx-border-color: #808080;
+	-fx-border-radius: 50;
+}
+
+.botaoCancelar{
+	-fx-fill: #ffffff;
+	-fx-background-radius: 50;
+	-fx-background-color:#ff8080;
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 20px;
+	-fx-min-width: 220px;
+}
+
+.comboBox{
+	-fx-font-family: Assistant;
+	-fx-start-margin: 20px;
+	-fx-background-radius: 30;
+	-fx-background-color:#e8e8f0;
+	-fx-border-radius: 30;
+	-fx-border-color: #808080;
+}
+
+.textfield{
+	-fx-font-family: Assistant;
+	-fx-start-margin: 10px;
+	-fx-background-radius: 30;
+	-fx-background-color:#e8e8f0;
+	-fx-border-color: #808080;
+	-fx-border-radius: 30;
+}
+
+
+.input{
+	-fx-start-margin: 60px;
+	-fx-background-radius: 40px;
+	-fx-border-color: #808080;
+	-fx-border-radius: 40px;
+}
