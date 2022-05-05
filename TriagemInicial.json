@@ -3,10 +3,10 @@
 		"robo": "tjma.PAGE.pje215.geral.TriagemInicial_Page",
 		"qtdRobos": "1", 
 		"timeout": "3",
-		"navegador": "CHROME",
+		"navegador": "null",
 		"url": "https://pje2.tjma.jus.br",
 		"perfis": [
-				"1ª Turma Recursal Permanente da Comarca da Ilha de São Luís / Gabinete do 1º Cargo da 1ª Turma Recursal Cível e Criminal de São Luis / Assessoria / Assessor"
+				""
 
 		],
 		"tarefas": [

@@ -9,6 +9,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
@@ -22,6 +23,7 @@ import javafx.geometry.NodeOrientation;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,7 +34,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -59,17 +65,21 @@ import javafx.stage.Stage;
 
 public class TelaPrincipal extends Application {
 
-	public String fonteGeral = "https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap";
-	public String fontLabelAssitant = "https://fonts.googleapis.com/css2?family=Assistant:wght@800&display=swap";
-	public Image tjIcon = new Image("images/tjlogo.png");
-	public Image toadaIcon = new Image("images/toadaIcon.png");
-	public List<String> perfis = new ArrayList<>();
-	public Scene tarefaScene;
-	public Scene telaPrincipal;
+	private String fonteGeral = "https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap";
+	private String fontLabelAssitant = "https://fonts.googleapis.com/css2?family=Assistant:wght@800&display=swap";
+	private Image tjIcon = new Image("images/balao.png");
+	private Image toadaWhiteIcon = new Image("images/TOADA WHITE.png");
+	private Image balaoBranco = new Image("images/BALOES.png");
+	private List<String> perfis = new ArrayList<>();
+	private Scene tarefaScene;
+	private Scene telaPrincipal;
 	private Stage primaryStage;
 	private Tarefas tarefas = new Tarefas();
 	private List<CheckBox> checkboxes = new ArrayList<CheckBox>();
-	int tamanhoLista = 0; //tamanho da lista de tarefas
+	private int tamanhoLista = 0; //tamanho da lista de tarefas
+	private String navegador = "";
+	private String perfil = "";
+	private String filtro = "";
 	
 	
 	@Override
@@ -128,15 +138,57 @@ public class TelaPrincipal extends Application {
 
 	public void telaPrincipal() {
 		// Caixa na vertical (alinha os elementos na vertical)
-		HBox tela = new HBox();
-		// VBox containerInterno = new VBox(10.0);
+		VBox tela = new VBox(10.0);
+		ImageView imagemTopoBranca = new ImageView(toadaWhiteIcon);
+		ImageView balao1 = new ImageView(balaoBranco);
+		ImageView balao2 = new ImageView(balaoBranco);
+		ImageView balao3 = new ImageView(balaoBranco);
+		ImageView balao4 = new ImageView(balaoBranco);
+		ImageView balao5 = new ImageView(balaoBranco);
+		ImageView balao6 = new ImageView(balaoBranco);
+		ImageView balao7 = new ImageView(balaoBranco);
+		ImageView balao8 = new ImageView(balaoBranco);
+		ImageView balao9 = new ImageView(balaoBranco);
+		ImageView balao10 = new ImageView(balaoBranco);
+		ImageView balao11 = new ImageView(balaoBranco);
+		ImageView balao12 = new ImageView(balaoBranco);
+		Blend blend = new Blend();
+		HBox containerComBalões = new HBox(40.0);
 		HBox containerPerfil = new HBox(10.0);
 		HBox containerTarefas = new HBox(10.0);
 		HBox containerFiltrar = new HBox(10.0);
-		HBox containerToada = new HBox(10.0);
 		GridPane containerInterno = new GridPane();
-		containerInterno.setGridLinesVisible(true);
-
+		List<ImageView> baloesBrancos = Arrays.asList(balao1,balao2,balao3,balao4,balao5,balao6,balao7,balao8,balao9,balao10,balao11,balao12);
+		containerComBalões.setMinSize(tela.getMinWidth(), tela.getMinHeight());
+		containerComBalões.setBackground(Background.fill(gradiente(
+				0, 1, 1, 0, 
+				new Stop[] {
+						new Stop(0.0, Color.TRANSPARENT), 
+						new Stop(1.0, Color.TRANSPARENT)
+						}
+				)
+			)
+		);
+		
+		for(ImageView b : baloesBrancos) {
+			int tamanho = new Random().nextInt(150);
+			double opacidade = new Random().nextDouble() - 0.3;
+			b.setOpacity(opacidade);
+			b.setLayoutX(new Random().nextDouble() * primaryStage.getWidth());
+			b.setLayoutY(new Random().nextDouble() * primaryStage.getHeight());
+			b.setFitWidth(65 * 5);
+			b.setFitHeight(65 * 3);
+			//tela.getChildren().add(b);
+		}
+		
+		imagemTopoBranca.setAccessibleText("Imagem do Toada Lab.");
+		imagemTopoBranca.setFitHeight(75.0);
+		imagemTopoBranca.setFitWidth(200.0);
+		tela.setAlignment(Pos.CENTER);
+		containerComBalões.setBlendMode(BlendMode.SOFT_LIGHT);
+		tela.setFillWidth(true);
+		tela.getChildren().addAll(imagemTopoBranca);
+		
 		// preenchendo a grid com linhas e colunas
 		containerInterno.getColumnConstraints().addAll(colunas(), colunas(), colunas(), colunas(), colunas(), colunas(),
 				colunas(), colunas(), colunas(), colunas());
@@ -144,12 +196,6 @@ public class TelaPrincipal extends Application {
 		containerInterno.getRowConstraints().addAll(linhas(), linhas(), linhas(), linhas(), linhas(), linhas(),
 				linhas(), linhas(), linhas(), linhas());
 
-		// conteudoInterno.setHgap(10.0);
-		/*
-		 * BackgroundImage imagemFundoToada = new BackgroundImage(fundo,
-		 * BackgroundRepeat.SPACE, null, BackgroundPosition.CENTER, new
-		 * BackgroundSize(1000, 650, false, false, false, false));
-		 */
 
 		primaryStage.setTitle("Rôbo Triador - Tela de configuração");
 		primaryStage.centerOnScreen();
@@ -157,9 +203,6 @@ public class TelaPrincipal extends Application {
 		primaryStage.setMinHeight(670.0);
 		primaryStage.setMinWidth(580.0);
 
-		// tela.setBackground(new Background(imagemFundoToada));
-		tela.setBackground(Background.fill(
-				gradiente(0, 0, 1, 1, new Stop[] { new Stop(0, Color.ALICEBLUE), new Stop(1, Color.CORNFLOWERBLUE) })));
 
 		// No Fx, eu tenho dois elementos: O palco (stage) e a Cena (Scene)
 		// Sempre que eu quiser mostrar uma cena (um conjunto organizado de
@@ -189,8 +232,10 @@ public class TelaPrincipal extends Application {
 		for (String p : perfis) {
 			perfilComboBox.getItems().add(p);
 		}
-
+		perfil = perfilComboBox.getValue();
+		
 		navegadorComboBox.getItems().addAll("CHROME", "OPERA", "FIREFOX");
+		navegador = navegadorComboBox.getValue();
 
 		// adicionando a um elemento as configuraçãos da classe .container definida no
 		// css
@@ -199,6 +244,7 @@ public class TelaPrincipal extends Application {
 		telaPrincipal.getStylesheets().add(caminhoCss);
 		tela.getStylesheets().add(caminhoCss);
 		containerInterno.getStylesheets().add(caminhoCss);
+		containerInterno.getStyleClass().add("containerInterno");
 
 		tela.getStyleClass().add("container");
 		botaoCadastrar.getStyleClass().addAll("fonteGeral", "botao");
@@ -220,8 +266,6 @@ public class TelaPrincipal extends Application {
 		containerPerfil.getChildren().addAll(perfilLabel, perfilComboBox);
 		containerTarefas.getChildren().addAll(tarefasLabel, tarefasButton);
 		containerFiltrar.getChildren().addAll(filtrarLabel, filtrarTextField);
-		// containerInterno.getChildren().addAll(containerPerfil, containerTarefas,
-		// containerFiltrar, botaoCadastrar);
 		containerInterno.add(navegadorLabel, 0, 3, 3, 1);// coluna, linha, colspan, rowspan
 		containerInterno.add(perfilLabel, 0, 4, 3, 1);
 		containerInterno.add(tarefasLabel, 0, 5, 3, 1);
@@ -233,12 +277,11 @@ public class TelaPrincipal extends Application {
 		containerInterno.add(filtrarTextField, 3, 6, 8, 1);
 
 		containerInterno.add(botaoCadastrar, 0, 9, 10, 1);
-
+		filtro = filtrarTextField.getText();
+		
 		tela.getChildren().add(containerInterno);
 		tela.setBackground(Background.fill(gradiente(0, 0, 1, 0,
-				new Stop[] { new Stop(0, Color.valueOf("#C33764")), new Stop(0.5, Color.CADETBLUE), new Stop(1, Color.valueOf("#1D2671")) })));
-
-		
+				new Stop[] { new Stop(0, Color.valueOf("#000428")), new Stop(0.5, Color.CADETBLUE), new Stop(1, Color.valueOf("#1D2671")) })));
 
 		containerInterno.setAlignment(Pos.CENTER);
 		containerInterno.setHgap(2.0);
@@ -254,10 +297,10 @@ public class TelaPrincipal extends Application {
 		perfilComboBox
 				.setAccessibleHelp("Selecione o perfil do usuário usado no PJE para realizar a triagem de processos.");
 		botaoCadastrar.setAccessibleHelp("Iniciar Triagem - clique aqui para iniciar a triagem.");
-
+		
 		// --------ESTILIZAÇÃO ---------:
 		containerInterno.setBackground(Background.fill(gradiente(0, 1, 1, 0,
-				new Stop[] { new Stop(0, Color.valueOf("#3494E6")),  new Stop(1, Color.valueOf("#A7BFE8")) })));
+				new Stop[] { new Stop(0, Color.WHITE),  new Stop(1, Color.WHITESMOKE) })));
 
 		containerInterno.setBorder(Border.stroke(Paint.valueOf("#0000FF")));
 		containerInterno.setMinSize(450.0, 350.0);
@@ -272,7 +315,6 @@ public class TelaPrincipal extends Application {
 		double tamanhoIdeal = (containerInterno.getMinWidth() / 10.0) * 6.8;
 		System.out.println(tamanhoIdeal);
 		// Definindo tamanho mínimo dos componentes pelo tamanho do tamanho do
-		// "conteudoInterno"
 		navegadorComboBox.setMinWidth(tamanhoIdeal);
 		navegadorComboBox.setMaxWidth(tamanhoIdeal);
 		perfilComboBox.setMinWidth(tamanhoIdeal);
@@ -319,11 +361,9 @@ public class TelaPrincipal extends Application {
 		quadroDeTarefas.layout();
 		
 		
-		//quadroDeTarefas.prefWidthProperty().bind(ObservableValue<Number> primaryStage.getWidth()); 
-		//quadroDeTarefas.prefHeightProperty().bind(alturaDaTela);
-		
 		quadroDeTarefas.getRowConstraints().add(linhasTarefas(30));
 		CheckBox selecionarTudo = new CheckBox("Selecionar ou Desmarcar Todas as Tarefas");
+		conteudoGeral.setAlignment(Pos.CENTER);
 		conteudoGeral.getChildren().add(selecionarTudo);
 		quadroDeTarefas.setAlignment(Pos.CENTER);
 
@@ -369,7 +409,6 @@ public class TelaPrincipal extends Application {
 			  }
 		}
 		
-		quadroDeTarefas.setGridLinesVisible(true);
 
 		HBox controles = new HBox(100.0);
 		controles.getChildren().addAll(voltar, selecionar);
@@ -389,7 +428,10 @@ public class TelaPrincipal extends Application {
 		tela.setCenterShape(true);
 		conteudoGeral.getChildren().addAll(quadroDeTarefas, controles);
 		tela.setContent(conteudoGeral);
-		
+		tela.setBackground(Background.fill(gradiente(0, 1, 1, 0,
+				new Stop[] { new Stop(0, Color.WHITE),  new Stop(1, Color.WHITESMOKE) })));
+
+		quadroDeTarefas.setBorder(Border.stroke(Paint.valueOf("#0000FF")));
 		
 		//Botão voltar
 		voltar.setOnAction(e -> {
@@ -445,10 +487,10 @@ public class TelaPrincipal extends Application {
 							+ "		\"robo\": \"tjma.PAGE.pje215.geral.TriagemInicial_Page\",\r\n"
 							+ "		\"qtdRobos\": \"1\", \r\n"
 							+ "		\"timeout\": \"3\",\r\n"
-							+ "		\"navegador\": \"CHROME\",\r\n"
+							+ "		\"navegador\": \"" +navegador+ "\",\r\n"
 							+ "		\"url\": \"https://pje2.tjma.jus.br\",\r\n"
 							+ "		\"perfis\": [\r\n"
-							+ "				\"1ª Turma Recursal Permanente da Comarca da Ilha de São Luís / Gabinete do 1º Cargo da 1ª Turma Recursal Cível e Criminal de São Luis / Assessoria / Assessor\"\r\n"
+							+ "				\"" +perfil+ "\"\r\n"
 							+ "\r\n"
 							+ "		],\r\n"
 							+ "		\"tarefas\": [\r\n"

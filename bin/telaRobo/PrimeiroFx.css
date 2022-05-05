@@ -6,12 +6,16 @@
 }
 
 .containerInterno{
-	-fx-background-color: #3d54c5;
 	-fx-font-family: Assistant;
 	-fx-background-radius: 50px;
-	-fx-stroke: "#B0C4DE";
-	-fx-stroke-width: 4;
+	-fx-border-color: #ffffff;
+	-fx-border-insets: -15;
+	-fx-border-width: 3;
+	-fx-stroke-width: 6px;
+	-fx-stroke-radius: 40;
 	-fx-background-radius: 40;
+	-fx-border-radius: 50px;
+	-fx-background-color: linear-gradient(from 25px 25px to 100px 100px, #d7d2cc, #E0EAFC);
 }
 
 .quadroDeTarefas{
@@ -55,6 +59,8 @@
 	-fx-text-fill: #0000ff;
 	-fx-font-size: 12px;
 	-fx-max-height: 20px;
+	-fx-border-color: #808080;
+	-fx-border-radius: 50;
 }
 
 .botaoCancelar{
@@ -71,6 +77,8 @@
 	-fx-start-margin: 20px;
 	-fx-background-radius: 30;
 	-fx-background-color:#e8e8f0;
+	-fx-border-radius: 30;
+	-fx-border-color: #808080;
 }
 
 .textfield{
@@ -78,10 +86,14 @@
 	-fx-start-margin: 10px;
 	-fx-background-radius: 30;
 	-fx-background-color:#e8e8f0;
+	-fx-border-color: #808080;
+	-fx-border-radius: 30;
 }
 
 
 .input{
 	-fx-start-margin: 60px;
-	-fx-background-radius: 40px
+	-fx-background-radius: 40px;
+	-fx-border-color: #808080;
+	-fx-border-radius: 40px;
 }
