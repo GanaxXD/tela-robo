@@ -48,3 +48,21 @@ Ao utilizar o FX, precisamos executar antes alguns passos importantes:
   
 ## Realizando configurações no Run Config ## 
   
+A estrutura do projeto contém uma pasta chamada *robos*.
+  
+Essa pasta contém os arquivos que serão usados nos computadores dos usuários finais. Nela, estão cópias do arquivo 
+de configuração (no formato *json*), o .bat (nesse caso, o robô), e o  
+arquivo de temas, no formato . txt, que contém as palavras chaves 
+ que o robô buscara no processo para etiquetar o mesmo.  
+Ao rodar o projeto pela primeira vez, será criado um App Config, acessado clicando 
+na seta ao lado do botão *run*, e navegue até a opção *Run Configuration*. 
+  Na tela que será aberta, selecione o App Config do robô rodado, e no quadro de Parâmetros, serão inseridos os dados que serão 
+enviados no *main*, na variável args. Aqui, deverá ser passaro, entre aspas duplas, o caminho do arquivo 
+ de configuração, seguido do temas, seguindo a seguinte sintaxe:  
+  
+```"pasta/nomeArquivoConfiguracao_config".json x "pasta/nomeArquivoTemas.txt"```
+  
+A figura abaixo exemplofica os passos descritos acima:  
+  
+  
+  
